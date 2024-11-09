@@ -52,29 +52,33 @@ const Login = () => {
     event.preventDefault();
     console.log('Login attempt with:', { email, password });
        if(email !=""){
-         navigate('/Home');
-       }
 
-       try {
-        const response = await fetch('http://localhost:44350/api/Employees/Login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ Email:email, Password:password}),
-        });
-    
-        if (!response.ok) {
-          throw new Error('Registration failed');
-        }else{
-          navigate('/Navbar');
+        try {
+          const response = await fetch('https://localhost:44350/api/Employees/Login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Email:email, Password:password}),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Registration failed');
+          }else{
+            sessionStorage.setItem('userEmail', email);
+            navigate('/Home');
+          }
+      
+          const data = await response.json();
+          console.log('Registration successful:', data);
+        } catch (error) {
+          console.error('Registration error:', error);
         }
-    
-        const data = await response.json();
-        console.log('Registration successful:', data);
-      } catch (error) {
-        console.error('Registration error:', error);
-      }
+        
+       }
+    //   navigate('/Home');
+  
+       
 
   };
 
@@ -85,15 +89,18 @@ const Login = () => {
 
   const handleRegistration = async (event) => {
     event.preventDefault();
+    alert("ddd")
     console.log('Registration attempt with:', { email, password, name,phn });
   
     try {
-      const response = await fetch('http://localhost:44350/api/Employees/AddUser', {
+      const response = await fetch('https://localhost:44350/api/Employees/AddUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ Email:email, Password:password, Name:name,phone:phn,status:1}),
+        body: JSON.stringify({Name:name, Email:email, Password:password ,phone:phn,status:1}),
+       //body: JSON.stringify({ Id:1,FirstName:'kkk', LatName:'tt',Email:'trbf@gmail.com',Password:'44'}),
+
       });
   
       if (!response.ok) {

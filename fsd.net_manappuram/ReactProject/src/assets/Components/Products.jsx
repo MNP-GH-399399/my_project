@@ -3,20 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Skeleton from 'react-loading-skeleton';
 import Navbar from './Navbar';
 
-function handleAddToCart() {
-  alert("add to cart");
-}
+
+
 
 const Products = () => {
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState(data);
+  const [filter, setFilter] = useState(data); 
   const [loading, setLoading] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 1000]); // Price range state
   const [selectedSizes, setSelectedSizes] = useState([]); // Selected sizes
   const [selectedFabric, setSelectedFabric] = useState(""); // Selected fabric
+    const [userEmail, setUserEmail] = useState(""); // State for userEmail
   let componentMounted = true;
 
   useEffect(() => {
+    const email = sessionStorage.getItem('userEmail');
+    setUserEmail(email); // Set userEmail state
     const getProducts = async () => {
       setLoading(true);
       const response = await fetch("https://fakestoreapi.com/products");
@@ -33,6 +35,45 @@ const Products = () => {
     };
     getProducts();
   }, []);
+
+  const handleAddToCart = async (event,product) => {
+    event.preventDefault(); // Prevent default form submission if this is in a form
+  
+    alert("add to cart");
+  
+    try {
+      const response = await fetch('https://localhost:44350/api/Employees/Addtocart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          OrderNo: '00000000-0000-0000-0000-000000000000', // Generate a new GUID for OrderNo
+             CustId: userEmail, // Use the userEmail for Customer ID
+          ProductID: product.id, // Use the product's ID
+          ProductName: product.title, // Use the product's title
+          Quantity: 1, // Example Quantity
+          Price: product.price.toString(), // Use the product's price and convert to string if needed
+          CartStatus: 1 // Exampl// Example Car
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.text(); // Get the error response
+        throw new Error(`Registration failed: ${errorData}`);
+      }
+  
+      const data = await response.json();
+      console.log('Registration successful:', data);
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
+  };
+  
+
+
+
+
 
   const Loading = () => {
     return (
@@ -90,9 +131,9 @@ const Products = () => {
                 <div className='card-body'>
                   <h5 className='card-title mb-0'>{product.title.substring(0, 12)}</h5>
                   <p className='card-text lead fw-bold'>${product.price}</p>
-                  <button className='btn btn-outline-dark' onClick={handleAddToCart}>
-                    BUY NOW
-                  </button>
+                  <button className='btn btn-outline-dark' onClick={(event) => handleAddToCart(event, product)}>
+                    
+                   Add to cart </button>
                 </div>
               </div>
             </div>
