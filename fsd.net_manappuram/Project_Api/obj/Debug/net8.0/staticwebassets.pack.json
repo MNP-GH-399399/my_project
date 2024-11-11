@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\399399\\Documents\\plsqldoc\\Project_Api\\wwwroot\\images\\5af43a52-4d2b-443b-88cf-d67fa8f4cba6.jpg",
+      "PackagePath": "staticwebassets\\images\\5af43a52-4d2b-443b-88cf-d67fa8f4cba6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\399399\\Documents\\plsqldoc\\Project_Api\\wwwroot\\images\\7a6cb09d-45dc-4d2e-a937-4e9e6654d1fb.jpg",
+      "PackagePath": "staticwebassets\\images\\7a6cb09d-45dc-4d2e-a937-4e9e6654d1fb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\399399\\Documents\\plsqldoc\\Project_Api\\wwwroot\\images\\images1.jpg",
+      "PackagePath": "staticwebassets\\images\\images1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\399399\\Documents\\plsqldoc\\Project_Api\\wwwroot\\images\\laptop-with-black-screen-that-says-dell-screen_1301214-13358.jpg",
+      "PackagePath": "staticwebassets\\images\\laptop-with-black-screen-that-says-dell-screen_1301214-13358.jpg"
+    },
+    {
+      "Id": "C:\\Users\\399399\\Documents\\plsqldoc\\Project_Api\\wwwroot\\images\\pexels-fotios-photos-1266982.jpg",
+      "PackagePath": "staticwebassets\\images\\pexels-fotios-photos-1266982.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Project_Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Project_Api.props",
+      "PackagePath": "build\\Project_Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Project_Api.props",
+      "PackagePath": "buildMultiTargeting\\Project_Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Project_Api.props",
+      "PackagePath": "buildTransitive\\Project_Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
